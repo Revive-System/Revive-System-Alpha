@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{09F29647A9CE6F6A}worlds/gmtestworld/gmtestworld.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+ }
+}

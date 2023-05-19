@@ -1,0 +1,8 @@
+GameProject {
+ ID "Reviver"
+ GUID "5C4F718AD8469951"
+ TITLE "Reviver"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}

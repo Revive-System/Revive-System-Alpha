@@ -1,0 +1,26 @@
+SCR_ChimeraCharacter {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
+   "Additional hit zones" {
+    SCR_CharacterHeadHitZone Head {
+     MaxHealth 30
+     DamageReduction 4
+     "Melee multiplier" 1
+     "Kinetic multiplier" 1
+    }
+    SCR_CharacterHitZone Neck {
+     MaxHealth 30
+     DamageReduction 10
+     AreaOverride 0.2
+     "Kinetic multiplier" 1
+    }
+    SCR_CharacterHitZone Chest {
+     MaxHealth 150
+     CriticalDamage 0.5
+     DamageReduction 15
+    }
+   }
+  }
+ }
+}

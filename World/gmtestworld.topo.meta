@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{864A719C1387CF77}worlds/gmtestworld/gmtestworld.topo"
+ Configurations {
+  MapTopoResourceClass PC {
+  }
+  MapTopoResourceClass XBOX_ONE : PC {
+  }
+  MapTopoResourceClass XBOX_SERIES : PC {
+  }
+  MapTopoResourceClass PS4 : PC {
+  }
+  MapTopoResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -51,6 +51,6 @@ _TBD_
 Please use our [Issue Tracker](https://github.com/HelionGaming/Revive-System/issues/new/choose) to report a bug, propose a feature, or suggest changes to the existing ones.
 
 ## License
-This mission is licensed under the Arma Public License Share Alike ([APL-SA](https://github.com/HelionGaming/Revive-System/blob/main/LICENSE.md)).
+This mod is licensed under the Arma Public License Share Alike ([APL-SA](https://github.com/HelionGaming/Revive-System/blob/main/LICENSE.md)).
 
 

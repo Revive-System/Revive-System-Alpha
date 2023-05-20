@@ -1,4 +1,4 @@
-// Version 1.1
+// Version 1.2
 modded class SCR_CharacterDamageManagerComponent
 {
 	
@@ -31,8 +31,8 @@ modded class SCR_CharacterDamageManagerComponent
 	        DamageManagerComponent damageManager = character.GetDamageManager();
 	        damageManager.EnableDamageHandling(false);
 			
-			// Schedule a call to the kill player function after 5 minutes (written in miliseconds)
-			GetGame().GetCallqueue().CallLater(KillPlayer,300000, false);
+			// Schedule a call to the kill player function after bleed out duration has passed (in miliseconds)
+			GetGame().GetCallqueue().CallLater(KillPlayer, s_HealthSettings.GetUnconsciousBleedoutDuration() * 1000, false);
 	    }
 		
 		else 

@@ -16,7 +16,11 @@ modded class SCR_CharacterDamageManagerComponent
 		if (!controller)
 			return;
 		
-	    if(state == ECharacterHealthState.CRITICAL && !controller.IsUnconscious())
+		// Skip handling if unit is already unconscious
+		if (controller.IsUnconscious())
+			return;
+		
+	    if(state == ECharacterHealthState.CRITICAL)
 	    {
 			// Makes it so that only players can be unconscious. there are issues when AI are unconscious
 			if (!EntityUtils.IsPlayer(character))
@@ -40,7 +44,6 @@ modded class SCR_CharacterDamageManagerComponent
 			// Schedule a call to the kill player function after bleed out duration has passed (in miliseconds)
 			GetGame().GetCallqueue().CallLater(KillPlayer, s_HealthSettings.GetUnconsciousBleedoutDuration() * 1000, false);
 	    }
-		
 		else 
 		{	
 			GetGame().GetCallqueue().Remove(KillPlayer); //Remove the KillPlayer function from the call queue

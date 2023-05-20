@@ -52,12 +52,15 @@ modded class SCR_HealingUserAction
 			damageManager.EnableDamageHandling(true);
 		
 		SCR_CharacterControllerComponent targetController = SCR_CharacterControllerComponent.Cast(targetCharacter.GetCharacterController());
-		if (targetController)
-			targetController.SetUnconscious(false);
-
+		if (!targetController)
+			return;
+		
 		SCR_CharacterDamageManagerComponent targetDamageMan = SCR_CharacterDamageManagerComponent.Cast(targetCharacter.GetDamageManager());
-		if (targetDamageMan)
+		if (targetDamageMan && targetController.IsUnconscious())
+		{
 			targetDamageMan.FullHeal();
+			targetController.SetUnconscious(false);
+		};
 		
 		/*GetGame().GetCallqueue().CallLater(FinishRevive, 5000, false, pOwnerEntity);*/
 		

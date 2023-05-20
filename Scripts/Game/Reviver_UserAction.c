@@ -41,47 +41,23 @@ modded class SCR_HealingUserAction
 {		
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
-		ChimeraCharacter userCharacter = ChimeraCharacter.Cast(pUserEntity);
-		if (!userCharacter)
-			return;		
-		
-		ChimeraCharacter targetCharacter = ChimeraCharacter.Cast(pOwnerEntity);
-		if (!targetCharacter)
-			return;
-		
-		SCR_CharacterControllerComponent userController = SCR_CharacterControllerComponent.Cast(userCharacter.GetCharacterController());
-		if (!userController)
-			return;
-		
-		IEntity item = userController.GetAttachedGadgetAtLeftHandSlot();
-		if (!item)
-			return;
-		
-		SCR_ConsumableItemComponent consumableComponent = GetConsumableComponent(userCharacter);
-		if (!consumableComponent)
-			return;
-		
-		SCR_ConsumableEffectHealthItems consumableEffect = SCR_ConsumableEffectHealthItems.Cast(consumableComponent.GetConsumableEffect());
-		if (!consumableEffect)
-			return;
-			
-		TAnimGraphCommand desiredCmd = consumableEffect.GetApplyToOtherAnimCmnd(pOwnerEntity);
+		super.PerformAction(pOwnerEntity, pUserEntity);
 
-		SCR_CharacterControllerComponent targetController = SCR_CharacterControllerComponent.Cast(targetCharacter.GetCharacterController());
-		if (targetController && targetController.IsUnconscious())
-			desiredCmd = consumableEffect.GetReviveAnimCmnd(pOwnerEntity);
-	
-		SCR_CharacterDamageManagerComponent targetDamageMan = SCR_CharacterDamageManagerComponent.Cast(targetCharacter.GetDamageManager());
-		if (!targetDamageMan)
-			return;
-
-		consumableComponent.SetTargetCharacter(pOwnerEntity);
-		consumableComponent.GetConsumableEffect().ActivateEffect(pOwnerEntity, pUserEntity, item, new SCR_ConsumableEffectAnimationParameters(desiredCmd, 1, 0.0, consumableEffect.GetApplyToOtherDuraction(), targetDamageMan.FindAssociatedBandagingBodyPart(m_eHitZoneGroup), 0.0, false));
+        ChimeraCharacter targetCharacter = ChimeraCharacter.Cast(pOwnerEntity);
+        if (!targetCharacter)
+            return;
 		
 		DamageManagerComponent damageManager = targetCharacter.GetDamageManager();
-		damageManager.EnableDamageHandling(true);
-		targetController.SetUnconscious(false);
-		targetDamageMan.FullHeal();
+		if (damageManager)
+			damageManager.EnableDamageHandling(true);
+		
+		SCR_CharacterControllerComponent targetController = SCR_CharacterControllerComponent.Cast(targetCharacter.GetCharacterController());
+		if (targetController)
+			targetController.SetUnconscious(false);
+
+		SCR_CharacterDamageManagerComponent targetDamageMan = SCR_CharacterDamageManagerComponent.Cast(targetCharacter.GetDamageManager());
+		if (targetDamageMan)
+			targetDamageMan.FullHeal();
 		
 		/*GetGame().GetCallqueue().CallLater(FinishRevive, 5000, false, pOwnerEntity);*/
 		

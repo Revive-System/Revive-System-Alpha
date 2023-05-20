@@ -7,18 +7,24 @@ modded class SCR_CharacterDamageManagerComponent
 	override void OnDamageStateChanged(EDamageState state)
 	{
 	    super.OnDamageStateChanged(state);
-	    if( state == ECharacterHealthState.CRITICAL)
+		
+		ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
+		if (!character)
+			return;
+		
+		CharacterControllerComponent controller = character.GetCharacterController();
+		if (!controller)
+			return;
+		
+	    if(state == ECharacterHealthState.CRITICAL && !controller.IsUnconscious())
 	    {
 			// Makes it so that only players can be unconscious. there are issues when AI are unconscious
-			ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
 			if (!EntityUtils.IsPlayer(character))
 				return;
 			
 			// permitting uncon in a vehicle creates a physics nightmare for the ragdoll and vehicle rigidbody 
 			if (character.IsInVehicle())
 				return;
-			
-	        CharacterControllerComponent controller = character.GetCharacterController();
 			
 			// Sets the player unconscious if health is Critical
 	        controller.SetUnconscious(true);

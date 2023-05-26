@@ -4,7 +4,10 @@
 [![Issues](https://img.shields.io/github/issues-raw/HelionGaming/Revive-System.svg?label=Issues&style=flat-square)](https://github.com/HelionGaming/Revive-System/issues)
 [![License](https://img.shields.io/badge/License-APL--SA-orange.svg?style=flat-square)](https://github.com/HelionGaming/Revive-System/blob/master/LICENSE.md)
 
-This is a rudimentary but working Revive System for Arma Reforger. The code for this was entirely assembled by ChatGPT, first of it's kind for Reforger I think. However ChatGPT can only take you 90% there with no coding knowledge, That's why I wanna thank Bacon#8008 and Zelik#0033 for assisting me when I hit a rut.
+> This is a rudimentary but working Revive System for Arma Reforger. The code for this was entirely assembled by ChatGPT, first of it's kind for Reforger I think. 
+> However ChatGPT can only take you 90% there with no coding knowledge, That's why I wanna thank Bacon#8008 and Zelik#0033 for assisting me when I hit a rut.
+>
+> -- [HelionGaming](https://github.com/HelionGaming)
 
 ## Features
 
@@ -29,14 +32,14 @@ This is a rudimentary but working Revive System for Arma Reforger. The code for 
 
 ### Workshop Link
 
-https://reforger.armaplatform.com/workshop/5C4F718AD8469951-ReviveSystemAlpha
+https://reforger.armaplatform.com/workshop/6FD4307E24115E90-ReviveSystemAlpha
 
 ### Mods JSON
 
 ```json
 "mods": [
     {
-        "modId": "5C4F718AD8469951",
+        "modId": "6FD4307E24115E90",
         "name": "Revive System Alpha"
     }
 ]
@@ -44,7 +47,7 @@ https://reforger.armaplatform.com/workshop/5C4F718AD8469951-ReviveSystemAlpha
 
 ### Mission Header Parameters
 
-_TBD_
+- Time in seconds before an unconscious unit bleeds out (default: `300`): `"m_fUnconsciousBleedoutDuration"`
 
 ## Submitting Issues
 

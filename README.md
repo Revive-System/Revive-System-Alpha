@@ -49,6 +49,12 @@ https://reforger.armaplatform.com/workshop/6FD4307E24115E90-ReviveSystemAlpha
 
 - Time in seconds before an unconscious unit bleeds out (default: `300`): `"m_fUnconsciousBleedoutDuration"`
 
+## Contributing
+
+You can help out with the ongoing development by looking for potential bugs in our code base, or by contributing new features. We are always welcoming new [pull requests](https://github.com/Revive-System/Revive-System-Alpha/pulls) containing bug fixes, refactors and new features. We have a list of tasks and bugs on our issue tracker on GitHub. Please comment on issues you want to contribute with, to avoid duplicating effort.
+
+To contribute something to this mod, simply fork this repository and submit your pull requests for review by other collaborators. Feel free to contact us if you need help getting started with GitHub.
+
 ## Submitting Issues
 
 Please use our [Issue Tracker](https://github.com/HelionGaming/Revive-System/issues/new/choose) to report a bug, propose a feature, or suggest changes to the existing ones.

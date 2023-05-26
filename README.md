@@ -7,7 +7,7 @@
 > This is a rudimentary but working Revive System for Arma Reforger. The code for this was entirely assembled by ChatGPT, first of it's kind for Reforger I think. 
 > However ChatGPT can only take you 90% there with no coding knowledge, That's why I wanna thank Bacon#8008 and Zelik#0033 for assisting me when I hit a rut.
 >
-> -- [HelionGaming](https://github.com/HelionGaming)
+> -- [Helion](https://github.com/HelionGaming)
 
 ## Features
 

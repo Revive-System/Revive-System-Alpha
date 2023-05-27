@@ -6,9 +6,9 @@ modded class SCR_ConsumableBandage : SCR_ConsumableEffectHealthItems
 	{
 		super.ApplyEffect(target, user, item, animParams);
 		
-        ChimeraCharacter targetCharacter = ChimeraCharacter.Cast(target);
-        if (!targetCharacter)
-            return;
+		ChimeraCharacter targetCharacter = ChimeraCharacter.Cast(target);
+		if (!targetCharacter)
+			return;
 			
 		SCR_CharacterControllerComponent targetController = SCR_CharacterControllerComponent.Cast(targetCharacter.GetCharacterController());
 		if (!targetController)

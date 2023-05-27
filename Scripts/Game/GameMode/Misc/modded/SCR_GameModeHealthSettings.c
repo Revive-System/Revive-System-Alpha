@@ -11,5 +11,5 @@ modded class SCR_GameModeHealthSettings : ScriptComponent
 			return m_fUnconsciousBleedoutDuration;
 		
 		return header.m_fUnconsciousBleedoutDuration;
-	}
-}
+	};
+};

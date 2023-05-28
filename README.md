@@ -11,17 +11,17 @@
 
 ## Features
 
-- Unconscious players will die after a fixed time (5 min by default)
+- Unconscious players will die when they bleed out. The more open wounds they have, the faster they will bleed out (Bleeding rate can be configured with `"m_fBleedingRate"`)
 - Players can revive eachother by treating all bleeding wounds with bandages
 - Reviving adds back health and blood to the player
-- Explosions don't (usually) kill players, instead it sends them away ragdoll-style
+- Explosions don't kill players, instead it sends them away ragdoll-style
 - Better Squad Cohesion, by making players stick together and lessens the chance of being sent back to spawn and losing coms range with with your squad.
 - It's more fun 
 
 
 ## Caveats
 
-- Players can still die depending on the damage they take, but for the most part the chance of going unconscious is roughly 70% based on my testing. The way this is achieved is by editing the character base to reduce incoming damage. This is not a great way to do it, but it works for now.
+- Currently only critical injured players become unconsciousness, which means that mildely injured players will bleed out without falling unconscious first.
 - Players drop their weapons when in a downed state, and will need to pick them up again, they can also be deleted by GM if they do an entity purge before players have picked up their weapons, might not be possible to fix.
 - Players die inside vehicles on purpose due to issues with the ragdoll physics. I will work on making it so they player is ejected first then made unconscious.
 - GMs can no longer heal players, don't know why this is, still trying to figure this one out.

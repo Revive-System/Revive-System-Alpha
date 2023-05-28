@@ -1,56 +1,82 @@
 modded class SCR_CharacterDamageManagerComponent
 {
-	override void OnDamageStateChanged(EDamageState state)
+	protected HitZone m_HealthHitZone;
+	protected float m_fCriticalHealth;
+	protected bool m_bUnconsciousProtectionEnabled = false;
+	
+	void SetUnconscious(bool enabled)
 	{
-		super.OnDamageStateChanged(state);
+		// Makes it so that only players can be unconscious. there are issues when AI are unconscious
+		ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
+		if (!EntityUtils.IsPlayer(character))
+			return;
+			
+		// permitting uncon in a vehicle creates a physics nightmare for the ragdoll and vehicle rigidbody 
+		if (character.IsInVehicle())
+			return;
 		
-		if (state == ECharacterHealthState.CRITICAL)
+		CharacterControllerComponent controller = character.GetCharacterController();	
+		if (controller.IsUnconscious() == enabled)
+			return;
+		
+		if (enabled)
 		{
-			// Makes it so that only players can be unconscious. there are issues when AI are unconscious
-			ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
-			if (!EntityUtils.IsPlayer(character))
-				return;
-			
-			// permitting uncon in a vehicle creates a physics nightmare for the ragdoll and vehicle rigidbody 
-			if (character.IsInVehicle())
-				return;
-			
-			CharacterControllerComponent controller = character.GetCharacterController();
-			
-			// Sets the player unconscious if health is Critical
-			controller.SetUnconscious(true);
-			
 			// If a player doesn't have a bleeding zone they can't be revived
-			SCR_CharacterDamageManagerComponent CharDamMan = SCR_CharacterDamageManagerComponent.Cast(character.GetDamageManager());
-			CharDamMan.AddParticularBleeding();
-			
-			// Schedule a call to the kill player function after bleed out duration has passed (in miliseconds)
-			GetGame().GetCallqueue().Remove(KillPlayer);
-			GetGame().GetCallqueue().CallLater(KillPlayer, s_HealthSettings.GetUnconsciousBleedoutDuration() * 1000, false);
+			// => Always add a bleeding zone to the chest
+			SCR_CharacterDamageManagerComponent charDamMan = SCR_CharacterDamageManagerComponent.Cast(character.GetDamageManager());
+			charDamMan.AddParticularBleeding();
 		}
 		else
 		{
-			GetGame().GetCallqueue().Remove(KillPlayer); //Remove the KillPlayer function from the call queue
+			FullHeal();
 		};
+		
+		controller.SetUnconscious(enabled);
 	};
 	
-	private void KillPlayer()
-	{
-		ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
-		CharacterControllerComponent controller = character.GetCharacterController();
-	
-		if (controller.IsUnconscious())
-		{
-			controller.ForceDeath();	
-		};
-	};
-	
-	//! Makes sure that the player actually stays unconscious if the healthstate change set them unconscious
-	override bool ShouldBeUnconscious()
+	bool IsUnconscious()
 	{
 		ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
 		CharacterControllerComponent controller = character.GetCharacterController();
 		
 		return controller.IsUnconscious();
 	};
+	
+	protected void SetUnconsciousProtection(bool enable)
+	{
+		m_bUnconsciousProtectionEnabled = enable;
+	};
+	
+	protected override void OnDamage(EDamageType type, float damage, HitZone pHitZone, IEntity instigator, inout vector hitTransform[3], float speed, int colliderID, int nodeID)
+	{
+		super.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
+		
+		if (!m_HealthHitZone)
+		{
+			m_HealthHitZone = GetHitZoneByName("Health");
+			m_fCriticalHealth = m_HealthHitZone.GetDamageStateThreshold(ECharacterHealthState.CRITICAL);
+		};
+				
+		// Sets the player unconscious if health is Critical
+		if (!IsUnconscious() && m_HealthHitZone.GetHealthScaled() <= m_fCriticalHealth)
+		{
+			SetUnconscious(true);
+			// Make sure unit can't die while falling unconscious (Protection for 1 second)
+			SetUnconsciousProtection(true);
+			GetGame().GetCallqueue().CallLater(SetUnconsciousProtection, 1000, false, false);
+		};
+		
+		// Unconscious protection handling
+		if (IsUnconscious() && m_bUnconsciousProtectionEnabled)
+		{
+			m_HealthHitZone.SetHealthScaled(m_fCriticalHealth);
+		};
+	};
+	
+	//! Makes sure that the player actually stays unconscious if the healthstate change set them unconscious
+	override bool ShouldBeUnconscious()
+	{
+		return IsUnconscious();
+	};
 };
+

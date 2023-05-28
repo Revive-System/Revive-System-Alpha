@@ -1,15 +1,16 @@
 modded class SCR_GameModeHealthSettings : ScriptComponent
 {	
-	[Attribute(defvalue: "300", uiwidget: UIWidgets.EditBox, desc: "How long it takes in seconds for an unconscious unit to bleed out")]
-	protected float m_fUnconsciousBleedoutDuration;
-
-	float GetUnconsciousBleedoutDuration()
+	[Attribute("1", desc: "Scenario header setting will overwrite these values.")];
+	protected bool m_bAllowHeaderSettings;
+	
+	override void OnPostInit(IEntity owner)
 	{
 		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
 		
-		if (!header)
-			return m_fUnconsciousBleedoutDuration;
-		
-		return header.m_fUnconsciousBleedoutDuration;
+		if (m_bAllowHeaderSettings && header)
+		{
+			m_fDOTScale = header.m_fBleedingRate;
+			m_fRegenScale = header.m_fHealthAndBloodRegenerationRate;
+		};
 	};
 };

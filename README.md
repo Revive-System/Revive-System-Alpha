@@ -46,7 +46,8 @@ https://reforger.armaplatform.com/workshop/6FD4307E24115E90-ReviveSystemAlpha
 
 ### Mission Header Parameters
 
-- Time in seconds before an unconscious unit bleeds out (default: `300`): `"m_fUnconsciousBleedoutDuration"`
+- Bleeding rate multiplier (default: `0.56`): `"m_fBleedingRate"`
+- Health and blood level regeneration rate multiplier (default: `1.00`): `"m_fHealthAndBloodRegenerationRate"`
 
 ## Contributing
 

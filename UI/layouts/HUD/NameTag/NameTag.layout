@@ -1,0 +1,32 @@
+FrameWidgetClass {
+ {
+  VerticalLayoutWidgetClass "{00000000490622C6}" {
+   Prefab "{00000000490622C6}"
+   {
+    OverlayWidgetClass "{000000001D3C96DD}" {
+     Prefab "{000000001D3C96DD}"
+     {
+      FrameWidgetClass "{55E0813E4A103125}" {
+       Prefab "{55E0813E4A103125}"
+       {
+        ImageWidgetClass "{55E87CF66AE32785}" {
+         Prefab "{55E87CF66AE32785}"
+         Texture "{0106EA1CD3DE5548}UI/Textures/Nametags/RS_nametagicons.imageset"
+         Image "incapacitated-shadow"
+         Size 64 64
+        }
+        ImageWidgetClass "{00000000559BABFA}" {
+         Prefab "{00000000559BABFA}"
+         Color 1 0 0 1
+         Texture "{0106EA1CD3DE5548}UI/Textures/Nametags/RS_nametagicons.imageset"
+         Image "incapacitated"
+         Size 64 64
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -5,5 +5,30 @@ SCR_BaseGameMode {
    m_fDOTScale 0.56
    m_bPermitUnconsciousness 1
   }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_aInstigatorEventNotificationKeys {
+    RS_InstigatorEventNotificationKeys "{5D7B3BE3249E4BAA}" {
+     m_UnknownOnPlayerNotificationKey PLAYER_INCAPACITATED
+     m_UnknownOnPossessedNotificationKey POSSESSED_INCAPACITATED
+     m_PlayerOnPlayerNotificationKey PLAYER_INCAPACITATED_PLAYER
+     m_PlayerOnPossessedNotificationKey PLAYER_INCAPACITATED_POSSESSED
+     m_PossessedOnPlayerNotificationKey POSSESSED_INCAPACITATED_PLAYER
+     m_PossessedOnPossessedNotificationKey POSSESSED_INCAPACITATED_POSSESSED
+     m_AIOnPlayerNotificationKey AI_INCAPACITATED_PLAYER
+     m_AIOnPossessedNotificationKey AI_INCAPACITATED_POSSESSED
+    }
+    RS_InstigatorEventNotificationKeys "{5D7B3BE3228798F0}" {
+     m_InstigatorEventKey REVIVED
+     m_UnknownOnPlayerNotificationKey PLAYER_REVIVED
+     m_UnknownOnPossessedNotificationKey POSSESSED_REVIVED
+     m_PlayerOnPlayerNotificationKey PLAYER_REVIVED_PLAYER
+     m_PlayerOnPossessedNotificationKey PLAYER_REVIVED_POSSESSED
+     m_PossessedOnPlayerNotificationKey POSSESSED_REVIVED_PLAYER
+     m_PossessedOnPossessedNotificationKey POSSESSED_REVIVED_POSSESSED
+     m_AIOnPlayerNotificationKey AI_REVIVED_PLAYER
+     m_AIOnPossessedNotificationKey AI_REVIVED_POSSESSED
+    }
+   }
+  }
  }
 }

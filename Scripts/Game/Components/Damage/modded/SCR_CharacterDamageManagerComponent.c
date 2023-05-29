@@ -10,10 +10,6 @@ modded class SCR_CharacterDamageManagerComponent
 		ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
 		if (!EntityUtils.IsPlayer(character))
 			return;
-			
-		// permitting uncon in a vehicle creates a physics nightmare for the ragdoll and vehicle rigidbody 
-		if (character.IsInVehicle())
-			return;
 		
 		CharacterControllerComponent controller = character.GetCharacterController();	
 		if (controller.IsUnconscious() == enabled)
@@ -21,6 +17,18 @@ modded class SCR_CharacterDamageManagerComponent
 		
 		if (enabled)
 		{
+			// Eject player if in vehicle
+			if (character.IsInVehicle())
+			{
+				SCR_EditableCharacterComponent editableCharacter = SCR_EditableCharacterComponent.Cast(character.FindComponent(SCR_EditableCharacterComponent));
+				if (editableCharacter)
+					editableCharacter.RemoveUsableVehicle(editableCharacter.GetVehicle().GetOwner(), false);
+				
+				SCR_CompartmentAccessComponent compartmentAccess = SCR_CompartmentAccessComponent.Cast(character.FindComponent(SCR_CompartmentAccessComponent));
+				if (compartmentAccess)
+					compartmentAccess.EjectOutOfVehicle();
+			};
+			
 			// If a player doesn't have a bleeding zone they can't be revived
 			// => Always add a bleeding zone to the chest
 			SCR_CharacterDamageManagerComponent charDamMan = SCR_CharacterDamageManagerComponent.Cast(character.GetDamageManager());

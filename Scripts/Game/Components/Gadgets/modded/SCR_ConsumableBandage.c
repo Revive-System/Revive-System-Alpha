@@ -21,7 +21,7 @@ modded class SCR_ConsumableBandage : SCR_ConsumableEffectHealthItems
 		// Unit gets revived if no bleeding wound is present
 		if (targetDamageMan.IsUnconscious() && !targetDamageMan.IsDamagedOverTime(EDamageType.BLEEDING))
 		{
-			targetDamageMan.SetUnconscious(false);
+			targetDamageMan.SetUnconscious(false, item.GetParent());
 		};
 	};
 };

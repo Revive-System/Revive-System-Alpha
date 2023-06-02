@@ -1,21 +1,21 @@
 modded class SCR_NotificationSenderComponent : SCR_BaseGameModeComponent
 {
 	[Attribute(desc: "")]
-	protected ref array<ref RS_InstigatorEventNotificationKeys> m_aInstigatorEventNotificationKeys;
+	protected ref array<ref RSA_InstigatorEventNotificationKeys> m_aInstigatorEventNotificationKeys;
 	
-	protected ref map<RS_EInstigatorEvent,ref RS_InstigatorEventNotificationKeys> m_mInstigatorEventNotificationKeysMap;
+	protected ref map<RSA_EInstigatorEvent,ref RSA_InstigatorEventNotificationKeys> m_mInstigatorEventNotificationKeysMap;
 	
 	override void OnControllableIncapacitated(IEntity entity, IEntity instigator)
 	{
-		OnInstigatorEvent(RS_EInstigatorEvent.INCAPACITATED, entity, instigator);
+		OnInstigatorEvent(RSA_EInstigatorEvent.INCAPACITATED, entity, instigator);
 	};
 	
 	override void OnControllableRevived(IEntity entity, IEntity instigator)
 	{
-		OnInstigatorEvent(RS_EInstigatorEvent.REVIVED, entity, instigator);
+		OnInstigatorEvent(RSA_EInstigatorEvent.REVIVED, entity, instigator);
 	};
 	
-	void OnInstigatorEvent(RS_EInstigatorEvent eventKey, IEntity entity, IEntity instigator)
+	void OnInstigatorEvent(RSA_EInstigatorEvent eventKey, IEntity entity, IEntity instigator)
 	{
 		if (!entity)
 			return;
@@ -41,16 +41,16 @@ modded class SCR_NotificationSenderComponent : SCR_BaseGameModeComponent
 	
 	void InitializeInstigatorEventNotificationKeys()
 	{
-		m_mInstigatorEventNotificationKeysMap = new map<RS_EInstigatorEvent,ref RS_InstigatorEventNotificationKeys>;
+		m_mInstigatorEventNotificationKeysMap = new map<RSA_EInstigatorEvent,ref RSA_InstigatorEventNotificationKeys>;
 		
-		foreach (RS_InstigatorEventNotificationKeys notificationKeys : m_aInstigatorEventNotificationKeys)
+		foreach (RSA_InstigatorEventNotificationKeys notificationKeys : m_aInstigatorEventNotificationKeys)
 		{
 			m_mInstigatorEventNotificationKeysMap.Set(notificationKeys.m_InstigatorEventKey, notificationKeys);
 		};
 	};
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void OnInstigatorEventBroadCast(RS_EInstigatorEvent eventKey, RplId entityId, RplId instigatorId)
+	void OnInstigatorEventBroadCast(RSA_EInstigatorEvent eventKey, RplId entityId, RplId instigatorId)
 	{
 		IEntity entity;
 		IEntity instigator;
@@ -71,7 +71,7 @@ modded class SCR_NotificationSenderComponent : SCR_BaseGameModeComponent
 		if (!m_mInstigatorEventNotificationKeysMap)
 			InitializeInstigatorEventNotificationKeys();
 		
-		RS_InstigatorEventNotificationKeys notificationKeys = m_mInstigatorEventNotificationKeysMap[eventKey];
+		RSA_InstigatorEventNotificationKeys notificationKeys = m_mInstigatorEventNotificationKeysMap[eventKey];
 		
 		bool isUnlimitedEditorOpened = false;
 		

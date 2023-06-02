@@ -1,14 +1,14 @@
-enum RS_EInstigatorEvent
+enum RSA_EInstigatorEvent
 {
 	INCAPACITATED,
 	REVIVED
 };
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(RS_EInstigatorEvent, "m_InstigatorEventKey")]
-class RS_InstigatorEventNotificationKeys
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(RSA_EInstigatorEvent, "m_InstigatorEventKey")]
+class RSA_InstigatorEventNotificationKeys
 {	
-	[Attribute("0", UIWidgets.SearchComboBox, "", "", ParamEnumArray.FromEnum(RS_EInstigatorEvent))]
-	RS_EInstigatorEvent m_InstigatorEventKey;
+	[Attribute("0", UIWidgets.SearchComboBox, "", "", ParamEnumArray.FromEnum(RSA_EInstigatorEvent))]
+	RSA_EInstigatorEvent m_InstigatorEventKey;
 	
 	[Attribute("0", UIWidgets.SearchComboBox, "", "", ParamEnumArray.FromEnum(ENotification))]
 	ENotification m_UnknownOnPlayerNotificationKey;

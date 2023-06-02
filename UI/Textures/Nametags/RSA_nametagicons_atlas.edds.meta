@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{760CE0468D0EDE8C}UI/Textures/Nametags/RS_nametagicons_atlas.edds"
+ Name "{E2EBC88655B84240}UI/Textures/Nametags/RSA_nametagicons_atlas.edds"
  Configurations {
   PNGResourceClass PC : "{1D692833852EC72A}Configs/System/ResourceTypes/PC/TextureUIAtlas.conf" {
   }

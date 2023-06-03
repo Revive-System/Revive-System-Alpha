@@ -36,9 +36,24 @@ modded class SCR_CharacterDamageManagerComponent
 			};
 			
 			// If a player doesn't have a bleeding zone they can't be revived
-			// => Always add a bleeding zone to the chest
-			SCR_CharacterDamageManagerComponent charDamMan = SCR_CharacterDamageManagerComponent.Cast(character.GetDamageManager());
-			charDamMan.AddParticularBleeding();
+			// => Add a bleeding to most damaged zone if needed
+			if (!m_aBleedingHitZones || m_aBleedingHitZones.IsEmpty())
+			{
+				HitZone mostDamagedZone;
+				float mostDamagedHealth = 1;
+				
+				array<HitZone> hitzones = {};
+				GetPhysicalHitZones(hitzones);
+				
+				foreach (HitZone hitzone : hitzones)
+				{
+					if (hitzone.GetHealthScaled() <= mostDamagedHealth)
+						mostDamagedZone = hitzone;
+				}
+				
+				AddParticularBleeding(mostDamagedZone.GetName());
+			};
+			
 			SCR_BaseGameMode.Cast(GetGame().GetGameMode()).OnControllableIncapacitated(GetOwner(), instigator);
 		}
 		else

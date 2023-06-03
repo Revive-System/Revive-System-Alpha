@@ -4,7 +4,7 @@ ImageSetClass {
   ImageSetTextureClass {
    screenSize FHD
    size 136 335
-   path "{760CE0468D0EDE8C}UI/Textures/Nametags/RS_nametagicons_atlas.edds"
+   path "{E2EBC88655B84240}UI/Textures/Nametags/RSA_nametagicons_atlas.edds"
   }
  }
  Images {

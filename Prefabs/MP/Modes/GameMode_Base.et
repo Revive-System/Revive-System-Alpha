@@ -7,7 +7,7 @@ SCR_BaseGameMode {
   }
   SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
    m_aInstigatorEventNotificationKeys {
-    RS_InstigatorEventNotificationKeys "{5D7B3BE3249E4BAA}" {
+    RSA_InstigatorEventNotificationKeys "{5D7B3BE3249E4BAA}" {
      m_UnknownOnPlayerNotificationKey PLAYER_INCAPACITATED
      m_UnknownOnPossessedNotificationKey POSSESSED_INCAPACITATED
      m_PlayerOnPlayerNotificationKey PLAYER_INCAPACITATED_PLAYER
@@ -17,7 +17,7 @@ SCR_BaseGameMode {
      m_AIOnPlayerNotificationKey AI_INCAPACITATED_PLAYER
      m_AIOnPossessedNotificationKey AI_INCAPACITATED_POSSESSED
     }
-    RS_InstigatorEventNotificationKeys "{5D7B3BE3228798F0}" {
+    RSA_InstigatorEventNotificationKeys "{5D7B3BE3228798F0}" {
      m_InstigatorEventKey REVIVED
      m_UnknownOnPlayerNotificationKey PLAYER_REVIVED
      m_UnknownOnPossessedNotificationKey POSSESSED_REVIVED

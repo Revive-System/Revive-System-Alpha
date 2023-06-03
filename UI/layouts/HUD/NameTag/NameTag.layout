@@ -11,14 +11,14 @@ FrameWidgetClass {
        {
         ImageWidgetClass "{55E87CF66AE32785}" {
          Prefab "{55E87CF66AE32785}"
-         Texture "{0106EA1CD3DE5548}UI/Textures/Nametags/RS_nametagicons.imageset"
+         Texture "{0106EA1CD3DE5548}UI/Textures/Nametags/RSA_nametagicons.imageset"
          Image "incapacitated-shadow"
          Size 64 64
         }
         ImageWidgetClass "{00000000559BABFA}" {
          Prefab "{00000000559BABFA}"
          Color 1 0 0 1
-         Texture "{0106EA1CD3DE5548}UI/Textures/Nametags/RS_nametagicons.imageset"
+         Texture "{0106EA1CD3DE5548}UI/Textures/Nametags/RSA_nametagicons.imageset"
          Image "incapacitated"
          Size 64 64
         }

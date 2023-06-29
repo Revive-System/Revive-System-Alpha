@@ -23,18 +23,6 @@ modded class SCR_CharacterDamageManagerComponent
 		
 		if (enabled)
 		{
-			// Eject player if in vehicle
-			if (character.IsInVehicle())
-			{
-				SCR_EditableCharacterComponent editableCharacter = SCR_EditableCharacterComponent.Cast(character.FindComponent(SCR_EditableCharacterComponent));
-				if (editableCharacter)
-					editableCharacter.RemoveUsableVehicle(editableCharacter.GetVehicle().GetOwner(), false);
-				
-				SCR_CompartmentAccessComponent compartmentAccess = SCR_CompartmentAccessComponent.Cast(character.FindComponent(SCR_CompartmentAccessComponent));
-				if (compartmentAccess)
-					compartmentAccess.EjectOutOfVehicle();
-			};
-			
 			// If a player doesn't have a bleeding zone they can't be revived
 			// => Always add a bleeding zone to the chest
 			SCR_CharacterDamageManagerComponent charDamMan = SCR_CharacterDamageManagerComponent.Cast(character.GetDamageManager());

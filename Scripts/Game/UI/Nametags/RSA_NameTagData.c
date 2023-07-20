@@ -1,3 +1,4 @@
+/*
 modded class SCR_NameTagData : Managed
 {
 	protected Widget m_wOverlayIcon;
@@ -14,3 +15,4 @@ modded class SCR_NameTagData : Managed
 		m_wOverlayIcon.SetVisible(m_CharController.IsUnconscious());
 	};
 };
+*/

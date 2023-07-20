@@ -91,14 +91,14 @@ modded class SCR_NotificationSenderComponent : SCR_BaseGameModeComponent
 		//~ Check if killed player message can be seen if Limited editor (or editor not open)
 		if (!isUnlimitedEditorOpened && m_iReceiveKillFeedType != EKillFeedReceiveType.ALL)
 		{
-			Faction localPlayerFaction = m_RespawnSystemComponent.GetLocalPlayerFaction();
+			Faction localPlayerFaction = m_FactionManager.GetLocalPlayerFaction();
 
 			//~ No local faction so don't show killfeed
 			if (!localPlayerFaction)
 				return;
 			
 			int localPlayerID = SCR_PlayerController.GetLocalPlayerId();
-			Faction killedPlayerFaction = m_RespawnSystemComponent.GetPlayerFaction(playerId);
+			Faction killedPlayerFaction = m_FactionManager.GetPlayerFaction(playerId);
 			
 			switch (m_iReceiveKillFeedType)
 			{
